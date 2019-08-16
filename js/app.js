@@ -76,7 +76,9 @@ var world = {
     onDeviceReady: function() {
         console.log('onDeviceReady');
         world.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+        console.log('onDeviceReady2');
         world.wikitudePlugin.isDeviceSupported(world.onDeviceSupported, world.onDeviceNotSupported, world.requiredFeatures);
+        console.log('onDeviceReady3');
     },
     // Callback if the device supports all required features
     onDeviceSupported: function() {
