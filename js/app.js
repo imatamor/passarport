@@ -50,6 +50,9 @@ $$('#my-login-screen .login-button').on('click', function () {
 $( document ).ready(function() 
 {
   console.log('ready');
+  $("#log").click(function(){
+    console.log('log');
+  });
 })
 /*-------------------------------------------------------------------------------------------------------------------------------
 / Name: wikitude
