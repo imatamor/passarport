@@ -43,18 +43,6 @@ $$('#my-login-screen .login-button').on('click', function () {
   app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
 /*-------------------------------------------------------------------------------------------------------------------------------
-/ Name: ready
-/ Use: 
-/ Description: Funciones que se cargan al momento de cargar el archivo
-/------------------------------------------------------------------------------------------------------------------------------*/
-$( document ).ready(function() 
-{
-  console.log('ready');
-  $("#log").click(function(){
-    console.log('log');
-  });
-})
-/*-------------------------------------------------------------------------------------------------------------------------------
 / Name: wikitude
 / Use: 
 / Description: Funciones para el AR
@@ -122,4 +110,18 @@ var world = {
 
 };
 
-world.initialize();
+//world.initialize();
+
+/*-------------------------------------------------------------------------------------------------------------------------------
+/ Name: ready
+/ Use: 
+/ Description: Funciones que se cargan al momento de cargar el archivo
+/------------------------------------------------------------------------------------------------------------------------------*/
+$( document ).ready(function() 
+{
+  console.log('ready');
+  $("#log").click(function(){
+    console.log('log');
+    world.initialize();
+  });
+})
