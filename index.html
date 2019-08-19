@@ -23,6 +23,11 @@
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
+
+  <script src="https://www.wikitude.com/libs/architect.js"></script>
+  <script type="text/javascript" src="js/ade.js"></script>
+
+  <link rel="stylesheet" href="css/default.css">
 </head>
 <body>
   <div id="app">
@@ -39,6 +44,13 @@
             <p>PASSARPORT APP</p>
           </div>
           <a href="#" class="button button-raised button-fill" id="log">log</a>
+          <div id="infoBox" class="info">
+            <div class="text">Scan Target &#35;1 (surfer):</div>
+            <div class="icons">
+                <img src='assets/surfer.png'/>
+            </div>
+          </div>
+          <div id="loadingMessage" class="info">Loading ...</div>
         </div>
       </div>
     </div>
@@ -56,7 +68,10 @@
   <script src="js/routes.js"></script>
 
   <!-- wikitude(AR) -->
-  <script src="js/WikitudePlugin.js"></script>
+  <!--script src="js/WikitudePlugin.js"></script-->
+
+  <!-- wikitude(AR) -->
+  <script src="js/imageontarget.js"></script>
 
   <!-- Your custom app scripts -->
   <script src="js/app.js"></script>

@@ -75,8 +75,8 @@ var world = {
     // deviceready Event Handler
     onDeviceReady: function() {
         console.log('onDeviceReady');
-        console.log('cordova: '+ cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin"));
-        //world.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+        //console.log('cordova: '+ cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin"));
+        world.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
         console.log('onDeviceReady2');
         world.wikitudePlugin.isDeviceSupported(world.onDeviceSupported, world.onDeviceNotSupported, world.requiredFeatures);
         console.log('onDeviceReady3');
