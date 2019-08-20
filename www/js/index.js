@@ -34,9 +34,15 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-
-        app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
-        alert('3');
+        try {
+          app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+        }
+        catch(error) {
+          console.error(error);
+          alert(error);
+          // expected output: ReferenceError: nonExistentFunction is not defined
+          // Note - error messages will vary depending on browser
+        }
         var worldPath = cordova.file.dataDirectory + 'www/world/ImageOnTarget/index.html';
         app.loadCustomARchitectWorldFromURL(worldPath);
     },
