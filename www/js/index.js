@@ -33,8 +33,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        alert('1');
         app.receivedEvent('deviceready');
-
+        
         app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
 
         var worldPath = cordova.file.dataDirectory + 'www/world/ImageOnTarget/index.html';
