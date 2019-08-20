@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        //app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+        app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
         alert('3');
         var worldPath = cordova.file.dataDirectory + 'www/world/ImageOnTarget/index.html';
         app.loadCustomARchitectWorldFromURL(worldPath);
