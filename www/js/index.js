@@ -33,7 +33,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
         try {
           app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
         }
@@ -43,71 +42,23 @@ var app = {
             // expected output: ReferenceError: nonExistentFunction is not defined
             // Note - error messages will vary depending on browser
         }
-        try {
-            var worldPath = cordova.file.dataDirectory + 'www/world/ImageOnTarget/index.html';
-            app.loadCustomARchitectWorldFromURL(worldPath);
-        }
-        catch(error) {
-            console.error(error);
-            alert(error);
-            // expected output: ReferenceError: nonExistentFunction is not defined
-            // Note - error messages will vary depending on browser
+        var launchDemoButton = document.getElementById('launch-demo');
+        launchDemoButton.onclick = function() {
+            app.loadARchitectWorld();
         }
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    },
-    // --- Wikitude Plugin ---
-    // Use this method to load a specific ARchitect World from either the local file system or a remote server
-    loadARchitectWorld: function(architectWorld) {
-
-        // check if the current device is able to launch ARchitect Worlds
+    loadARchitectWorld: function() {
         app.wikitudePlugin.isDeviceSupported(function() {
-
-            app.wikitudePlugin.setOnUrlInvokeCallback(app.onUrlInvoke);
-
             app.wikitudePlugin.loadARchitectWorld(function successFn(loadedURL) {
-                    /* Respond to successful world loading if you need to */
-                    alert('Loading AR web view success');
                 }, function errorFn(error) {
                     alert('Loading AR web view failed: ' + error);
                 },
-                architectWorld.path, architectWorld.requiredFeatures, architectWorld.startupConfiguration
+                cordova.file.dataDirectory + 'www/pgday/index.html', [ '2d_tracking' ], { camera_position: 'back' }
             );
         }, function(errorMessage) {
-            alert('device is not supported');
             alert(errorMessage);
         },
-        architectWorld.requiredFeatures
+        [ '2d_tracking' ]
         );
-    },
-    loadCustomARchitectWorldFromURL: function(url) {
-        var world = {
-            "path": url,
-            "requiredFeatures": [
-                "2d_tracking"
-            ],
-            "startupConfiguration": {
-                "camera_position": "back"
-            }
-        };
-        app.loadARchitectWorld(world);
-    },
-    // This function gets called if you call "document.location = architectsdk://" in your ARchitect World
-    onUrlInvoke: function (url) {
-        if (url.indexOf('__qery__') > -1) {
-
-        } else {
-            alert(url + "not handled");
-        }
     }
-    // --- End Wikitude Plugin ---
 };
