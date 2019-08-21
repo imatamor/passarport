@@ -35,16 +35,24 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         try {
-          app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+            app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
         }
         catch(error) {
-          console.error(error);
-          alert(error);
-          // expected output: ReferenceError: nonExistentFunction is not defined
-          // Note - error messages will vary depending on browser
+            console.error(error);
+            alert(error);
+            // expected output: ReferenceError: nonExistentFunction is not defined
+            // Note - error messages will vary depending on browser
         }
-        var worldPath = 'world/ImageOnTarget/index.html';
-        app.loadCustomARchitectWorldFromURL(worldPath);
+        try {
+            var worldPath = 'world/ImageOnTarget/index.html';
+            app.loadCustomARchitectWorldFromURL(worldPath);
+        }
+        catch(error) {
+            console.error(error);
+            alert(error);
+            // expected output: ReferenceError: nonExistentFunction is not defined
+            // Note - error messages will vary depending on browser
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
