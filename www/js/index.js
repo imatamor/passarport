@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         try {
-            app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+          app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
         }
         catch(error) {
             console.error(error);
@@ -44,7 +44,7 @@ var app = {
             // Note - error messages will vary depending on browser
         }
         try {
-            var worldPath = 'world/ImageOnTarget/index.html';
+            var worldPath = cordova.file.dataDirectory + 'www/world/ImageOnTarget/index.html';
             app.loadCustomARchitectWorldFromURL(worldPath);
         }
         catch(error) {
@@ -76,6 +76,7 @@ var app = {
 
             app.wikitudePlugin.loadARchitectWorld(function successFn(loadedURL) {
                     /* Respond to successful world loading if you need to */
+                    alert('Loading AR web view success');
                 }, function errorFn(error) {
                     alert('Loading AR web view failed: ' + error);
                 },
