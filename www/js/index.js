@@ -76,7 +76,6 @@ var app = {
 
             app.wikitudePlugin.loadARchitectWorld(function successFn(loadedURL) {
                     /* Respond to successful world loading if you need to */
-                    alert('Loading AR web view success');
                 }, function errorFn(error) {
                     alert('Loading AR web view failed: ' + error);
                 },
